@@ -1,0 +1,29 @@
+---
+#home directory
+APP_HOME_DIR: "/home/ubuntu"
+
+#apps setup directory
+APP_SETUP_DIR: "{{APP_HOME_DIR}}/setup"
+
+#tomcat setup directory
+TOMCAT_SETUP_DIR: "{{APP_HOME_DIR}}/tomcat"
+
+#java setup directory
+JAVA_HOME_DIR: "{{APP_HOME_DIR}}/java"
+
+#tomcat url
+TOMCAT_URL: "http://mirrors.estointernet.in/apache/tomcat/tomcat-9/v9.0.30/bin/apache-tomcat-9.0.30.tar.gz"
+
+#java url
+JAVA_URL: "https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.5%2B10/OpenJDK11U-jre_x64_linux_hotspot_11.0.5_10.tar.gz"
+
+#zip files
+JAVA_ZIP_FILE: "OpenJDK11U-jre_x64_linux_hotspot_11.0.5_10.tar.gz"
+TOMCAT_ZIP_FILE: "apache-tomcat-9.0.30.tar.gz"
+
+#defining remote source
+IS_REMOTE_IS_REMOTE: no
+
+#name of the war file which has to deploy in webapps
+APP_WAR_NAME: "sample.war"
+
