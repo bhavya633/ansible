@@ -26,4 +26,3 @@ IS_REMOTE_IS_REMOTE: no
 
 #name of the war file which has to deploy in webapps
 APP_WAR_NAME: "sample.war"
-
