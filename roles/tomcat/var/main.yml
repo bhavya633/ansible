@@ -6,7 +6,7 @@ APP_HOME_DIR: "/home/ubuntu"
 APP_SETUP_DIR: "{{APP_HOME_DIR}}/setup"
 
 #tomcat setup directory
-TOMCAT_SETUP_DIR: "{{APP_HOME_DIR}}/tomcat"
+TOMCAT_APP_DIR: "{{APP_HOME_DIR}}/tomcat"
 
 #java setup directory
 JAVA_HOME_DIR: "{{APP_HOME_DIR}}/java"
@@ -25,4 +25,4 @@ TOMCAT_ZIP_FILE: "apache-tomcat-9.0.30.tar.gz"
 IS_REMOTE_IS_REMOTE: no
 
 #name of the war file which has to deploy in webapps
-APP_WAR_NAME: "sample.war"
+APP_WAR_FILE: "sample.war"

@@ -37,5 +37,5 @@
     args:      
       chdir: "{{TOMCAT_APP_DIR}}/bin"
     environment:
-      JAVA_HOME: "{{JAVA_HOME_DIR}}/java"
-      PATH: "{{JAVA_HOME_DIR}}/bin:$PATH"
+      JAVA_HOME:{{JAVA_HOME_DIR}}/java
+      PATH:$PATH:$JAVA_HOME/bin
