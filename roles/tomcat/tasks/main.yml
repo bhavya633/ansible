@@ -1,5 +1,5 @@
 ---
-- name: create the floder for apps
+- name: create floders for apps
   file:
     dest: "{{ item }}"
     state: directory
@@ -16,26 +16,26 @@
     - "{{ JAVA_URL }}"
 - name: extracting java tar
   unarchive:
-    src: "{{APP_SETUP_DIR}}/{{JAVA_ZIP_FILE}}"
-    dest: "{{JAVA_HOME_DIR}"
-    remote_src: "{IS_REMOTE_IS_REMOTE}}"
+    src: "{{ APP_SETUP_DIR }}/{{ JAVA_ZIP_FILE }}"
+    dest: "{{ JAVA_HOME_DIR }}"
+    remote_src: "{{ IS_REMOTE_IS_REMOTE }}"
     extra_opts: 
       - --strip-components=1
 - name: extracting tomcat
   unarchive:
-    src: "{{APP_SETUP_DIR}}/{{TOMCAT_ZIP_FILE}}"
-    dest: "{{TOMCAT_APP_DIR}}"
-    remote_src: "{{IS_REMOTE_IS_REMOTE}}"
+    src: "{{ APP_SETUP_DIR }}/{{ TOMCAT_ZIP_FILE }}"
+    dest: "{{ TOMCAT_APP_DIR }}"
+    remote_src: "{{ IS_REMOTE_IS_REMOTE }}"
     extra_opts:
       - --strip-components=1
 - name: coping war file
   copy:
-    src: "{{APP_WAR_FILE}}"
+    src: "{{ APP_WAR_FILE }}"
     dest: "{{ TOMCAT_APP_DIR }}/webapps/"
 - name: starting the tomcat
   shell: "nohup ./catalina.sh run >> ../logs/appserver.log &"
-    args:      
-      chdir: "{{TOMCAT_APP_DIR}}/bin"
+  args:      
+    chdir: "{{TOMCAT_APP_DIR}}/bin"
     environment:
       JAVA_HOME:{{JAVA_HOME_DIR}}/java
       PATH:$PATH:$JAVA_HOME/bin
