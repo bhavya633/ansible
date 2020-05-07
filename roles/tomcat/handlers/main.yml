@@ -1,0 +1,13 @@
+---
+# handlers for tomcat
+- name: start-tomcat
+  service: 
+     name: tomcat
+     state: started
+     enabled: yes
+     daemon_reload: yes
+ 
+- name: restart-webserver
+  service:
+     name: tomcat
+     state: restarted

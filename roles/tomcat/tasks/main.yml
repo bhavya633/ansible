@@ -28,14 +28,46 @@
     remote_src: "{{ IS_REMOTE_IS_REMOTE }}"
     extra_opts:
       - --strip-components=1
+
+- name: copy tomcat users
+  template:
+    src: "context.xml"
+    dest: "{{ TOMCAT_APP_DIR }}/conf/tomcat-user.xml"
+
+- name: copy tomcat context file
+  template:
+    src: "context.xml"
+    dest: "{{ TOMCAT_APP_DIR }}/webapps/META-INF/context.xml"
+
+- name: copy tomcat server config
+  template:
+    src: "server.xml"
+    dest: "{{ TOMCAT_APP_DIR }}/config/server.xml"
+    
+- name: create group
+  group: name=tomcat
+
+- name: create user tomcat
+  user: name=tomcat group=tomcat
+
+- name: change ownership
+  file:
+    dest: "{{ TOMCAT_APP_DIR }}"
+    state: directory
+    owner: tomcat
+    group: tomcat
+    recurse: yes
+
+- name: copy tomcat service file
+  template:
+    src: "tomcat.yml"
+    dest: "/etc/systemd/system/tomcat.service"
+  notify:
+    - start-tomcat
+    
 - name: coping war file
   copy:
     src: "{{ APP_WAR_FILE }}"
     dest: "{{ TOMCAT_APP_DIR }}/webapps/"
-- name: starting the tomcat
-  shell: "nohup ./catalina.sh run >> ../logs/appserver.log &"
-  args:      
-    chdir: "{{TOMCAT_APP_DIR}}/bin"
-    environment:
-      JAVA_HOME:{{JAVA_HOME_DIR}}/java
-      PATH:$PATH:$JAVA_HOME/bin
+  notify:
+    - restart-tomcat

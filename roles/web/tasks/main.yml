@@ -4,19 +4,16 @@
      name: "{{ item }}"
      state: present
      update_cache: yes
-  with items:
+  with_items:
      - "{{ package_manager }}"
      - "{{ web_server }}"
-- name: starting the webserver
-  service: 
-     name: "{{ web_server }}"
-     state: started
+  notify:
+     - start-webserver
+
 - name: copying web content to doc root
   copy:
-     src: "{{ source_file }}"
+     src: "{{ source_dir }}"
      dest: "{{ doc_root }}"
      mode: "0644"
-- name: restart webserver
-  service:
-     name: "{{ web_server}}"
-     state: restarted
+   notify:
+     - restart-webserver
