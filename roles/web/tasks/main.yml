@@ -15,5 +15,5 @@
      src: "{{ source_dir }}/"
      dest: "{{ doc_root }}/"
      mode: "0644"
-   notify:
+  notify:
      - restart-webserver
