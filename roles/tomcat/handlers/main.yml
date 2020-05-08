@@ -7,7 +7,7 @@
      enabled: yes
      daemon_reload: yes
  
-- name: restart-webserver
+- name: restart-tomcat
   service:
      name: tomcat
      state: restarted
