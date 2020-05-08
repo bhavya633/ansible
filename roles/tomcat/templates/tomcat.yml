@@ -8,11 +8,11 @@ Type=forking
 User=tomcat
 Group=tomcat
 
-Environment="JAVA_HOME={{ JAVA_HOME }}"
+Environment="JAVA_HOME= "{{ JAVA_HOME_DIR }}"
 Environment="JAVA_OPTS=-Djava.security.egd=file:///dev/urandom -Djava.awt.headless=true"
-Environment="CATALINA_BASE={{TOMCAT_APP_DIR }}"
-Environment="CATALINA_HOME={{TOMCAT_APP_DIR }}"
-Environment="CATALINA_PID={{TOMCAT_APP_DIR }}/temp/tomcat.pid"
+Environment="CATALINA_BASE={{ TOMCAT_APP_DIR }}"
+Environment="CATALINA_HOME={{ TOMCAT_APP_DIR }}"
+Environment="CATALINA_PID={{ TOMCAT_APP_DIR }}/temp/tomcat.pid"
 Environment="CATALINA_OPTS=-Xms512M -Xmx1024M -server -XX:+UseParallelGC"
 
 ExecStart={{ TOMCAT_APP_DIR }}/bin/startup.sh
