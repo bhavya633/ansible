@@ -51,7 +51,7 @@
 - name: copy tomcat context file
   template:
     src: "context.xml"
-    dest: "{{ TOMCAT_APP_DIR }}/webapps/META-INF/context.xml"
+    dest: "{{ TOMCAT_APP_DIR }}/webapps/manager/META-INF/context.xml"
 
 - name: copy tomcat server config
   template:
