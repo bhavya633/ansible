@@ -12,8 +12,8 @@
 
 - name: copying web content to doc root
   copy:
-     src: "{{ source_dir }}"
-     dest: "{{ doc_root }}"
+     src: "{{ source_dir }}/"
+     dest: "{{ doc_root }}/"
      mode: "0644"
    notify:
      - restart-webserver
