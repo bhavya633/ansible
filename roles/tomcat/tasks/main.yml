@@ -56,7 +56,7 @@
 - name: copy tomcat server config
   template:
     src: "server.xml"
-    dest: "{{ TOMCAT_APP_DIR }}/config/server.xml"
+    dest: "{{ TOMCAT_APP_DIR }}/conf/server.xml"
 
 - name: copy tomcat service file
   template:
