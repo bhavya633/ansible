@@ -29,6 +29,20 @@
     extra_opts:
       - --strip-components=1
 
+- name: create group
+  group: name=tomcat
+
+- name: create user tomcat
+  user: name=tomcat group=tomcat
+
+- name: change ownership
+  file:
+    dest: "{{ TOMCAT_APP_DIR }}"
+    state: directory
+    owner: tomcat
+    group: tomcat
+    recurse: yes
+
 - name: copy tomcat users
   template:
     src: "context.xml"
@@ -43,20 +57,6 @@
   template:
     src: "server.xml"
     dest: "{{ TOMCAT_APP_DIR }}/config/server.xml"
-    
-- name: create group
-  group: name=tomcat
-
-- name: create user tomcat
-  user: name=tomcat group=tomcat
-
-- name: change ownership
-  file:
-    dest: "{{ TOMCAT_APP_DIR }}"
-    state: directory
-    owner: tomcat
-    group: tomcat
-    recurse: yes
 
 - name: copy tomcat service file
   template:
