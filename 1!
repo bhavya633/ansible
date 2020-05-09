@@ -1,0 +1,19 @@
+---
+- name: installing webserver
+  package:
+     name: "{{ item }}"
+     state: present
+     update_cache: yes
+  with_items:
+     - "{{ package_manager }}"
+     - "{{ web_server }}"
+  notify:
+     - start-webserver
+
+- name: copying web content to doc root
+  copy:
+     src: "{{ source_dir }}/"
+     dest: "{{ doc_root }}/"
+     mode: "0644"
+  notify:
+     - restart-webserver
