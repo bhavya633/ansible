@@ -1,0 +1,12 @@
+---
+#handlers for dbsrver
+
+- name: start-dbserver
+  service:  
+   name: "{{ db_server }}"
+   state: started
+  
+- name: restart-dbserver
+  service:
+     name: "{{ db_server }}"
+     state: restarted
