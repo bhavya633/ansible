@@ -1,2 +1,9 @@
 ---
 #dbserver variables
+package_manager: "apt"
+
+db_server: "mysql-server"
+
+my_php: "php"
+
+php_sql_pacakge: "php-mysql"
