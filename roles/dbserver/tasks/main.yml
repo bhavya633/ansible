@@ -1,2 +1,14 @@
 ---
-- name:
+- name: instaling dbserver
+  package:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+  with_items:
+    - "{{ pacakage_manager }}"
+    - "{{ db_server }}"
+    - "{{ my_php }}"
+    - "{{ php_sql_pacakge }}"
+  notify:
+    - start-dbserver
+
