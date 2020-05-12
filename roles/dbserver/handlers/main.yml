@@ -3,10 +3,10 @@
 
 - name: start-dbserver
   service:  
-   name: "{{ db_server }}"
+   name: mysql
    state: started
   
 - name: restart-dbserver
   service:
-     name: "{{ db_server }}"
+     name: mysql
      state: restarted
